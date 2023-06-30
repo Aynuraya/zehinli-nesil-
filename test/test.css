@@ -1,0 +1,205 @@
+body, html
+{
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   font-size: 16px;
+   font-family: helvetica, arial;
+   background: #f9f9f9;
+   color: #111;
+}
+ 
+.wrapper
+{
+   width: 100%;
+   height: 100%;
+   display: table;
+}
+ 
+.main
+{
+   display: table-cell;
+   vertical-align: middle;
+   text-align: center;
+}
+ 
+.quiz-frame
+{
+   border: 0;
+   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+ 
+.quiz__head
+{
+   font-size: 20pt;
+   margin: 10px;
+   margin-bottom: 50px;
+}
+ 
+.head__content
+{
+   padding: 5px;
+}
+ 
+.quiz__body
+{
+   margin: 10px;
+}
+ 
+.quiz__footer
+{
+   position: absolute;
+   bottom: 0;
+   display: block;
+   width: 100%;
+}
+ 
+.footer__content
+{
+   padding: 5px;
+}
+ 
+.button
+{
+   border: 0;
+   border-radius: 10px;
+   background: #6477EB;
+   color: #fff;
+   padding: 10px 25px;
+   width: 70%;
+   font-size: 15pt;
+   display: block;
+   margin: 2px auto;
+   cursor: pointer;
+}
+ 
+.button_wrong
+{
+   background: #EB6465;
+}
+ 
+.button_correct
+{
+   background: #5EB97D;
+}
+ 
+.button_passive
+{
+   background: #B3B3B3;
+}
+//Массив с результатами
+const results =
+[
+   new Result("Вам многому нужно научиться", 0),
+   new Result("Вы уже неплохо разбираетесь", 2),
+   new Result("Ваш уровень выше среднего", 4),
+   new Result("Вы в совершенстве знаете тему", 6)
+];
+ 
+//Массив с вопросами
+const questions =
+[
+   new Question("2 + 2 = ",
+   [
+       new Answer("2", 0),
+       new Answer("3", 0),
+       new Answer("4", 1),
+       new Answer("0", 0)
+   ])
+];
+ 
+//Сам тест
+const quiz = new Quiz(1, questions, results);
+Update();
+ 
+//Обновление теста
+function Update()
+{
+   //Проверяем, есть ли ещё вопросы
+   if(quiz.current < quiz.questions.length)
+   {
+       //Если есть, меняем вопрос в заголовке
+       headElem.innerHTML = quiz.questions[quiz.current].text;
+ 
+       //Удаляем старые варианты ответов
+       buttonsElem.innerHTML = "";
+ 
+       //Создаём кнопки для новых вариантов ответов
+       for(let i = 0; i < quiz.questions[quiz.current].answers.length; i++)
+       {
+           let btn = document.createElement("button");
+           btn.className = "button";
+ 
+           btn.innerHTML = quiz.questions[quiz.current].answers[i].text;
+ 
+           btn.setAttribute("index", i);
+ 
+           buttonsElem.appendChild(btn);
+       }
+      
+       //Выводим номер текущего вопроса
+       pagesElem.innerHTML = (quiz.current + 1) + " / " + quiz.questions.length;
+ 
+       //Вызываем функцию, которая прикрепит события к новым кнопкам
+       Init();
+   }
+   else
+   {
+       //Если это конец, то выводим результат
+       buttonsElem.innerHTML = "";
+       headElem.innerHTML = quiz.results[quiz.result].text;
+       pagesElem.innerHTML = "Очки: " + quiz.score;
+   }
+}
+ 
+function Init()
+{
+   //Находим все кнопки
+   let btns = document.getElementsByClassName("button");
+ 
+   for(let i = 0; i < btns.length; i++)
+   {
+       //Прикрепляем событие для каждой отдельной кнопки
+       //При нажатии на кнопку будет вызываться функция Click()
+       btns[i].addEventListener("click", function (e) { Click(e.target.getAttribute("index")); });
+   }
+}
+ 
+function Click(index)
+{
+   //Получаем номер правильного ответа
+   let correct = quiz.Click(index);
+ 
+   //Находим все кнопки
+   let btns = document.getElementsByClassName("button");
+ 
+   //Делаем кнопки серыми
+   for(let i = 0; i < btns.length; i++)
+   {
+       btns[i].className = "button button_passive";
+   }
+ 
+   //Если это тест с правильными ответами, то мы подсвечиваем правильный ответ зелёным, а неправильный - красным
+   if(quiz.type == 1)
+   {
+       if(correct >= 0)
+       {
+           btns[correct].className = "button button_correct";
+       }
+ 
+       if(index != correct)
+       {
+           btns[index].className = "button button_wrong";
+       }
+   }
+   else
+   {
+       //Иначе просто подсвечиваем зелёным ответ пользователя
+       btns[index].className = "button button_correct";
+   }
+ 
+   //Ждём секунду и обновляем тест
+   setTimeout(Update, 1000);
+}

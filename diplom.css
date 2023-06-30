@@ -1,0 +1,206 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+header,
+footer {
+  width: 100%;
+  padding: 15px 0;
+}
+
+header>.contayner,
+footer {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-spacing: 5px;
+}
+
+.logo {
+  text-align: center;
+  color: green;
+}
+
+.logo>h1 {
+  text-transform: capitalize;
+  font-size: 70px;
+}
+
+.logo>h3 {
+  font-size: 20px;
+  color: black;
+  margin-top: 115px;
+  text-align: justify;
+}
+
+.logo>h3>p {
+  text-align: end;
+  margin-top: 15PX;
+}
+
+.menyu {
+  width: 100%;
+  background-color: #CCFFB3;
+ }
+ .menyu > .contayner {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+    align-items: center;}
+
+ a {
+  color: black;
+  font-weight: bold;
+ }
+
+  a:hover {
+  color: green;
+  
+ }
+   .esasysahypa,
+   .select,
+   .duzgunler,
+   .diplom,
+   .kategoriya,
+   .heart,
+   .telefon,
+   .globus{
+    margin-left: 20px;
+   }
+   
+   .menyu > .contayner> .nav {
+    display: flex;
+    font-size: 20px;
+    font-family:Poppins;
+    justify-content: space-between;
+    align-items: center;
+    color: green;
+   }
+  .lines {
+    display: flex;
+    width: 80%;
+    text-align: center;
+    justify-content: space-around;
+    margin: 0 auto;}
+
+  .content {
+    width: 100%;
+    margin: 15px;
+    padding: 20px;
+  }
+  .content>.text>.hh1,
+  .hh2 {
+
+    color: green;
+    text-align: center;
+    padding: 20px;
+    background-color: #8DFC5833; }
+
+  .content>.text {
+    font-size: 25px;
+    text-align: justify;
+  }
+
+  .bolum {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2);
+    justify-content: space-between;
+    margin: 30px 50px 30px 50px
+  }
+
+  .bolum1,
+  .bolum2,
+  .bolum3,
+  .bolum4 {
+    width: 50%;
+    background-color: rgb(144, 255, 144);
+    border: 1px solid green;
+    text-align: center;
+    margin-left: 170px;
+    margin-bottom: 25px;
+    padding: 30px;
+    border-radius: 5px 30px 5px 5px;
+  }
+
+.centered text {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 596px;
+}
+
+.text h1 {
+    margin: 0 auto;
+}
+
+.buttons {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+
+}
+
+.buttons input {
+    display: block;
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px 20px;
+}
+  .tazelikler>.bolumler {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+  }
+
+  .habarly-bol {
+    display: flex;
+    justify-content: end;
+    color: aliceblue;
+    width: 100%;
+    padding: 20px;
+  }
+
+  footer>.foot2>.yukle {
+    display: flex;
+    justify-content: center;
+  }
+
+  footer {
+    background-color:rgb(144, 255, 144);
+    width: 100%;
+    padding: 20px;
+  }
+  @media (max-width: 800px) {
+    .bolum {
+    grid-template-columns: repeat( 1, 1fr);
+    grid-template-rows: repeat(4);
+    margin: auto;
+    }
+    header>.contayner,
+   footer,
+   .menyu {
+     width: 80%;
+     display: inline;
+   }
+   .gerb,
+   .emblema {
+    display: inline-block;
+    width: 30px;
+    justify-content: center;
+   }
+   }

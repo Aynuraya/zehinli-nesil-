@@ -1,0 +1,93 @@
+@import url("https://fonts.cdnfonts.com/css/poppins");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+
+header,
+footer {
+  width: 100%;
+  padding: 15px 0;
+}
+
+
+header>.contayner,
+footer {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-spacing: 5px;
+}
+
+.logo {
+  text-align: center;
+  color: green;
+}
+
+.logo>h1 {
+  text-transform: capitalize;
+  font-size: 70px;
+}
+
+.logo>h3 {
+  font-size: 20px;
+  color: black;
+  margin-top: 115px;
+  text-align: justify;
+}
+
+.logo>h3>p {
+  text-align: end;
+  margin-top: 15PX;
+}
+
+
+.bolum {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ grid-template-rows: repeat(2);
+ justify-content: space-between;
+ margin: 30px 50px 30px 50px
+}
+.bolum1,
+.bolum2,
+.bolum3,
+.bolum4 {
+ width: 50%;
+ background-color: rgb(144, 255, 144);
+ border: 1px solid green;
+ text-align: center;
+ margin-left: 170px;
+ margin-bottom: 25px;
+ padding: 30px;
+ border-radius: 5px 30px 5px 5px;
+}
+
+
+@media (max-width: 800px) {
+ .bolum {
+ grid-template-columns: repeat( 1, 1fr);
+ grid-template-rows: repeat(4);
+ margin: auto;
+ }
+ header>.contayner,
+footer {
+  width: 80%;
+  display: inline;
+}
+.gerb,
+.emblema {
+ display: inline-block;
+ width: 30px;
+ justify-content: center;
+ 
+}
+}
